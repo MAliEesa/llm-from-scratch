@@ -1,0 +1,30 @@
+"byte per encoding program"
+text = input()
+split = list(text)
+print(split)
+
+for j in range(6):
+    dict1 = {}
+    for i in range(len(split)-1):
+        pair = (split[i],split[i+1])
+        if pair in dict1:
+            dict1[pair] += 1
+        else:
+            dict1[pair] = 1
+    print(dict1)
+    if not dict1:
+        break
+    maxdict1 = max(dict1,key=dict1.get)
+    print(maxdict1)
+
+    newsplit= []
+    i = 0
+    while i <len(split):
+        if i<len(split)-1 and split[i] == maxdict1[0] and split[i+1]==maxdict1[1]:
+            newsplit.append(split[i]+split[i+1])
+            i += 2
+        else:
+            newsplit.append(split[i])
+            i += 1
+    print(newsplit)
+    split = newsplit
